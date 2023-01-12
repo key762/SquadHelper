@@ -144,6 +144,8 @@ def on_press(key, frm):
         pydirectinput.moveRel(0, 1, relative=True)
     if key == keyboard.Key.f8:
         pydirectinput.moveRel(0, -1, relative=True)
+    if key == keyboard.Key.f11:
+        pydirectinput.moveRel(0, 10, relative=True)
     # if key == keyboard.Key.f8:
     #     x = Symbol('x')
     #     a = solve([(-0.01) * x * x + (3.7 * x) + 268.3 - 525.2])
@@ -175,7 +177,7 @@ class Trans(Frame):
         Frame.__init__(self, parent, id, title, pos=(1460, 0), size=(460, 20), style=STAY_ON_TOP)
         # Frame.__init__(self, parent, id, title, pos=(1430, 0), size=(500, 20), style=STAY_ON_TOP)
         # 设置标尺
-        self.ruleritle = TextCtrl(self, value='标尺', style=TE_CENTER + TE_READONLY, pos=(0, 0), size=(40, 20))
+        self.ruleritle = TextCtrl(self, value='标尺', style=TE_CENTER|TE_READONLY, pos=(0, 0), size=(40, 20))
         self.ruleritle.SetBackgroundColour(''), self.ruleritle.SetForegroundColour('Steel Blue')
         self.ruler = TextCtrl(self, style=TE_CENTER + TE_READONLY, pos=(40, 0), size=(60, 20))
         self.ruler.SetBackgroundColour(''), self.ruler.SetForegroundColour('Steel Blue')
