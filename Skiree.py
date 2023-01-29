@@ -197,9 +197,9 @@ def mouse_click(x, y, button, pressed, frm):
                         frm.setDistance("error")
                         return False
                     distance_current = round(((distance_yuan * ruler_current) / ruler_yuan), 1)
-                    frm.distancetext(str(distance_current) + "m")
+                    frm.setDistance(str(distance_current) + "m")
                     # 显示方位
-                    frm.positiontext(str(calc_angle(self_x, self_y, target_x, target_y)) + '°')
+                    frm.setPosition(str(calc_angle(self_x, self_y, target_x, target_y)) + '°')
                     # 显示仰角
                     if 274.35 <= distance_current <= 623.1:
                         x = Symbol('x')
@@ -208,9 +208,9 @@ def mouse_click(x, y, button, pressed, frm):
                         for i in a:
                             if i.get(x) <= 180:
                                 b = round(i.get(x), 1)
-                        frm.elevationtext(str(b))
+                        frm.setTarget(str(b))
                     else:
-                        frm.elevationtext(str('out'))
+                        frm.setTarget(str('out'))
                     return False
                 # 直接计算
                 mouse_num += 1
