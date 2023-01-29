@@ -8,30 +8,38 @@ import win32ui
 import threading
 from sympy import *
 from pynput import keyboard, mouse
+from wx import Font
 
 
 class SquadHelper(wx.Frame):
 
     def __init__(self, parent, id, title):
-        wx.Frame.__init__(self, parent, id, title, pos=(1670, 0), size=(250, 20), style=wx.STAY_ON_TOP)
+        wx.Frame.__init__(self, parent, id, title, pos=(1600, 0), size=(320, 22), style=wx.STAY_ON_TOP)
+        # 武器
+        weapons = ['PLA', '火箭车']
+        self.weapon = wx.Choice(parent=self, id=id, choices=weapons, pos=(0, 0), size=(70, 22), style=wx.CB_SORT)
+        self.weapon.SetSelection(0)
+        self.weapon.SetBackgroundColour(''), self.weapon.SetForegroundColour('orange')
+        # print(frame.weapon.GetStringSelection())
+
         # 标尺
-        self.ruler = wx.StaticText(parent=self, id=id, label="标尺", pos=(0, 0), size=(50, 20),
+        self.ruler = wx.StaticText(parent=self, id=id, label="标尺", pos=(70, 0), size=(50, 22),
                                    style=wx.ALIGN_CENTRE_HORIZONTAL)
         self.ruler.SetBackgroundColour(''), self.ruler.SetForegroundColour('red')
         # 距离
-        self.distance = wx.StaticText(parent=self, id=id, label="距离", pos=(50, 0), size=(50, 20),
+        self.distance = wx.StaticText(parent=self, id=id, label="距离", pos=(120, 0), size=(50, 22),
                                       style=wx.ALIGN_CENTRE_HORIZONTAL)
         self.distance.SetBackgroundColour(''), self.distance.SetForegroundColour('blue')
         # 方位
-        self.position = wx.StaticText(parent=self, id=id, label="方位", pos=(100, 0), size=(50, 20),
+        self.position = wx.StaticText(parent=self, id=id, label="方位", pos=(170, 0), size=(50, 22),
                                       style=wx.ALIGN_CENTRE_HORIZONTAL)
         self.position.SetBackgroundColour(''), self.position.SetForegroundColour('black')
         # 目标
-        self.target = wx.StaticText(parent=self, id=id, label="目标", pos=(150, 0), size=(50, 20),
+        self.target = wx.StaticText(parent=self, id=id, label="目标", pos=(220, 0), size=(50, 22),
                                     style=wx.ALIGN_CENTRE_HORIZONTAL)
         self.target.SetBackgroundColour(''), self.target.SetForegroundColour('purple')
         # 当前
-        self.current = wx.StaticText(parent=self, id=id, label="当前", pos=(200, 0), size=(50, 20),
+        self.current = wx.StaticText(parent=self, id=id, label="当前", pos=(270, 0), size=(50, 22),
                                      style=wx.ALIGN_CENTRE_HORIZONTAL)
         self.current.SetBackgroundColour(''), self.current.SetForegroundColour('orange')
         # 设置
