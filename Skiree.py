@@ -111,21 +111,23 @@ def on_press(key, frm):
     if key == keyboard.Key.f4:
         window_capture("compare.jpg")
         frm.setRuler('点自己')
-        pix = get_pix_avg(1270, 2)
-        if pix == 0:
-            ruler_current = 900
-            frm.setRuler('900m')
-        elif pix < 10:
-            pixTwo = get_pix_avg(1271, 1)
-            if pixTwo == 252:
-                ruler_current = 900
-                frm.setRuler('900m')
-            else:
-                ruler_current = 300
-                frm.setRuler('300m')
-        elif pix > 10:
+        pix = get_pix_avg(1272, 2)
+        if pix == 765:
             ruler_current = 100
             frm.setRuler('100m')
+        else:
+            pixTwo = get_pix_avg(1271, 3)
+            if pixTwo != 0:
+                ruler_current = 300
+                frm.setRuler('300m')
+            else:
+                pixThree = get_pix_avg(1271, 4)
+                if pixThree == 765:
+                    ruler_current = 300
+                    frm.setRuler('300m')
+                else:
+                    ruler_current = 900
+                    frm.setRuler('900m')
         mouse_num = 0
         self_x = 0
         self_y = 0
